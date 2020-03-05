@@ -1,0 +1,2 @@
+include ':app', ':pay_sdk', ':compiler', ':annotations'
+rootProject.name='paySdk'

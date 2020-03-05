@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.50'
+
+    //基本配置
+    ext.COMPILE_SDK_VERSION = 29
+    ext.MIN_SDK_VERSION = 19
+//androidx
+    ext.appcompat_version = '1.1.0'
+    ext.core_ktx_version = '1.1.0'
+    ext.lifecycle_version = '2.1.0'
+    ext.material_version = '1.1.0'
+    ext.multidex_vesion = '2.0.1'
+    ext.constraintlayout_version = '1.1.3'
+    ext.palette_version = '1.0.0'
+    ext.cardview_version = '1.0.0'
+    ext.recyclerview_version = '1.0.0'
+    ext.leakcanary_version = '2.0'
+    ext.basepopup_version = '2.2.1'
+    ext.gson_version = '2.8.5'
+
+
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+        google()
+        jcenter()
+        // alipay添加下面的内容
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+    resourcePrefix "pay_"
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion COMPILE_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$core_ktx_version"
+    //BasePopup主体库
+    implementation "com.github.razerdp:BasePopup:$basepopup_version"
+    implementation(name: 'alipaySdk-15.6.5-20190718211148', ext: 'aar')
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.cardview:cardview:$cardview_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+    api project(':annotations')
+}
